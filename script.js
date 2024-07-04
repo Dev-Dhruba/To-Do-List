@@ -7,7 +7,7 @@ const inputBox = document.querySelector(".input-box")
 inputButton.addEventListener("click", () => {
     const inputFieldValue = inputField.value;
     
-    if(inputFieldValue === " "){
+    if(inputFieldValue === ""){
         alert("Please type something in the input box");
     }
 
@@ -22,14 +22,19 @@ inputButton.addEventListener("click", () => {
         
         inputField.value = "";
     }
+    localStorage.setItem("data", items.innerHTML)
 });
 
 items.addEventListener('click', (e) => {
     if(e.target.tagName === "LI"){
         e.target.style.textDecoration = "line-through"
         e.target.classList.add("one");
+        localStorage.setItem("data", items.innerHTML)
     }
     else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
+        localStorage.setItem("data", items.innerHTML)
     }
 })
+
+items.innerHTML = localStorage.getItem("data");
