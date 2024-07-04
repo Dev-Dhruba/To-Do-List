@@ -21,16 +21,15 @@ inputButton.addEventListener("click", () => {
         cross.innerText = "x";
         
         inputField.value = "";
-    
-        newlist.addEventListener('click', () => {
-            newlist.style.textDecoration = "line-through"
-            newlist.classList.add("one");
-
-        });
-        
-        cross.addEventListener('click', () => {
-            cross.parentElement.remove();
-
-        });
     }
 });
+
+items.addEventListener('click', (e) => {
+    if(e.target.tagName === "LI"){
+        e.target.style.textDecoration = "line-through"
+        e.target.classList.add("one");
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+    }
+})
